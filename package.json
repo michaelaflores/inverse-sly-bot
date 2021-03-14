@@ -1,6 +1,12 @@
 {
   "name": "inverse-sly-bot",
+  "scripts": {
+    "build": "tsc --version"
+  },
   "devDependencies": {
     "typescript": "^4.2.3"
+  },
+  "dependencies": {
+    "discord.js": "^12.5.1"
   }
 }

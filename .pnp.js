@@ -37,9 +37,95 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {
           "packageLocation": "./",
           "packageDependencies": [
+            ["discord.js", "npm:12.5.1"],
             ["typescript", "patch:typescript@npm%3A4.2.3#builtin<compat/typescript>::version=4.2.3&hash=a45b0e"]
           ],
           "linkType": "SOFT",
+        }]
+      ]],
+      ["@discordjs/collection", [
+        ["npm:0.1.6", {
+          "packageLocation": "./.yarn/cache/@discordjs-collection-npm-0.1.6-bad654db9e-da87faf997.zip/node_modules/@discordjs/collection/",
+          "packageDependencies": [
+            ["@discordjs/collection", "npm:0.1.6"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@discordjs/form-data", [
+        ["npm:3.0.1", {
+          "packageLocation": "./.yarn/cache/@discordjs-form-data-npm-3.0.1-d60fa9fc03-2ddf4c9bba.zip/node_modules/@discordjs/form-data/",
+          "packageDependencies": [
+            ["@discordjs/form-data", "npm:3.0.1"],
+            ["asynckit", "npm:0.4.0"],
+            ["combined-stream", "npm:1.0.8"],
+            ["mime-types", "npm:2.1.29"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["abort-controller", [
+        ["npm:3.0.0", {
+          "packageLocation": "./.yarn/cache/abort-controller-npm-3.0.0-2f3a9a2bcb-cc53ad8df9.zip/node_modules/abort-controller/",
+          "packageDependencies": [
+            ["abort-controller", "npm:3.0.0"],
+            ["event-target-shim", "npm:5.0.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["asynckit", [
+        ["npm:0.4.0", {
+          "packageLocation": "./.yarn/cache/asynckit-npm-0.4.0-c718858525-a024000b9d.zip/node_modules/asynckit/",
+          "packageDependencies": [
+            ["asynckit", "npm:0.4.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["combined-stream", [
+        ["npm:1.0.8", {
+          "packageLocation": "./.yarn/cache/combined-stream-npm-1.0.8-dc14d4a63a-5791ce7944.zip/node_modules/combined-stream/",
+          "packageDependencies": [
+            ["combined-stream", "npm:1.0.8"],
+            ["delayed-stream", "npm:1.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["delayed-stream", [
+        ["npm:1.0.0", {
+          "packageLocation": "./.yarn/cache/delayed-stream-npm-1.0.0-c5a4c4cc02-d9dfb0a7c7.zip/node_modules/delayed-stream/",
+          "packageDependencies": [
+            ["delayed-stream", "npm:1.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["discord.js", [
+        ["npm:12.5.1", {
+          "packageLocation": "./.yarn/cache/discord.js-npm-12.5.1-e8b380c863-18850040f3.zip/node_modules/discord.js/",
+          "packageDependencies": [
+            ["discord.js", "npm:12.5.1"],
+            ["@discordjs/collection", "npm:0.1.6"],
+            ["@discordjs/form-data", "npm:3.0.1"],
+            ["abort-controller", "npm:3.0.0"],
+            ["node-fetch", "npm:2.6.1"],
+            ["prism-media", "virtual:e8b380c863850045a09fce6a1a72065e59ee06032967e3a05d31d31a6b12f36728a27d7aa0dd96dbe022359b27ded736a360a4131e9d020175782aee48634e4d#npm:1.2.8"],
+            ["setimmediate", "npm:1.0.5"],
+            ["tweetnacl", "npm:1.0.3"],
+            ["ws", "virtual:e8b380c863850045a09fce6a1a72065e59ee06032967e3a05d31d31a6b12f36728a27d7aa0dd96dbe022359b27ded736a360a4131e9d020175782aee48634e4d#npm:7.4.4"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["event-target-shim", [
+        ["npm:5.0.1", {
+          "packageLocation": "./.yarn/cache/event-target-shim-npm-5.0.1-cb48709025-d176477a31.zip/node_modules/event-target-shim/",
+          "packageDependencies": [
+            ["event-target-shim", "npm:5.0.1"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["inverse-sly-bot", [
@@ -47,9 +133,90 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",
           "packageDependencies": [
             ["inverse-sly-bot", "workspace:."],
+            ["discord.js", "npm:12.5.1"],
             ["typescript", "patch:typescript@npm%3A4.2.3#builtin<compat/typescript>::version=4.2.3&hash=a45b0e"]
           ],
           "linkType": "SOFT",
+        }]
+      ]],
+      ["mime-db", [
+        ["npm:1.46.0", {
+          "packageLocation": "./.yarn/cache/mime-db-npm-1.46.0-46f8800b47-4e137ac502.zip/node_modules/mime-db/",
+          "packageDependencies": [
+            ["mime-db", "npm:1.46.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["mime-types", [
+        ["npm:2.1.29", {
+          "packageLocation": "./.yarn/cache/mime-types-npm-2.1.29-18d18d60ed-744d72b2a2.zip/node_modules/mime-types/",
+          "packageDependencies": [
+            ["mime-types", "npm:2.1.29"],
+            ["mime-db", "npm:1.46.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["node-fetch", [
+        ["npm:2.6.1", {
+          "packageLocation": "./.yarn/cache/node-fetch-npm-2.6.1-46c670dbc1-cbb171635e.zip/node_modules/node-fetch/",
+          "packageDependencies": [
+            ["node-fetch", "npm:2.6.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["prism-media", [
+        ["npm:1.2.8", {
+          "packageLocation": "./.yarn/cache/prism-media-npm-1.2.8-453c1c20bf-0d164984c7.zip/node_modules/prism-media/",
+          "packageDependencies": [
+            ["prism-media", "npm:1.2.8"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:e8b380c863850045a09fce6a1a72065e59ee06032967e3a05d31d31a6b12f36728a27d7aa0dd96dbe022359b27ded736a360a4131e9d020175782aee48634e4d#npm:1.2.8", {
+          "packageLocation": "./.yarn/$$virtual/prism-media-virtual-eba86636b5/0/cache/prism-media-npm-1.2.8-453c1c20bf-0d164984c7.zip/node_modules/prism-media/",
+          "packageDependencies": [
+            ["prism-media", "virtual:e8b380c863850045a09fce6a1a72065e59ee06032967e3a05d31d31a6b12f36728a27d7aa0dd96dbe022359b27ded736a360a4131e9d020175782aee48634e4d#npm:1.2.8"],
+            ["@discordjs/opus", null],
+            ["@types/discordjs__opus", null],
+            ["@types/ffmpeg-static", null],
+            ["@types/node-opus", null],
+            ["@types/opusscript", null],
+            ["ffmpeg-static", null],
+            ["node-opus", null],
+            ["opusscript", null]
+          ],
+          "packagePeers": [
+            "@discordjs/opus",
+            "@types/discordjs__opus",
+            "@types/ffmpeg-static",
+            "@types/node-opus",
+            "@types/opusscript",
+            "ffmpeg-static",
+            "node-opus",
+            "opusscript"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["setimmediate", [
+        ["npm:1.0.5", {
+          "packageLocation": "./.yarn/cache/setimmediate-npm-1.0.5-54587459b6-87884d8add.zip/node_modules/setimmediate/",
+          "packageDependencies": [
+            ["setimmediate", "npm:1.0.5"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["tweetnacl", [
+        ["npm:1.0.3", {
+          "packageLocation": "./.yarn/cache/tweetnacl-npm-1.0.3-b7eef04660-1188f3ef85.zip/node_modules/tweetnacl/",
+          "packageDependencies": [
+            ["tweetnacl", "npm:1.0.3"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["typescript", [
@@ -57,6 +224,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/typescript-patch-99fe32b02b-a8956044aa.zip/node_modules/typescript/",
           "packageDependencies": [
             ["typescript", "patch:typescript@npm%3A4.2.3#builtin<compat/typescript>::version=4.2.3&hash=a45b0e"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["ws", [
+        ["npm:7.4.4", {
+          "packageLocation": "./.yarn/cache/ws-npm-7.4.4-745c19daca-ad08761ed7.zip/node_modules/ws/",
+          "packageDependencies": [
+            ["ws", "npm:7.4.4"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:e8b380c863850045a09fce6a1a72065e59ee06032967e3a05d31d31a6b12f36728a27d7aa0dd96dbe022359b27ded736a360a4131e9d020175782aee48634e4d#npm:7.4.4", {
+          "packageLocation": "./.yarn/$$virtual/ws-virtual-e5282b7d91/0/cache/ws-npm-7.4.4-745c19daca-ad08761ed7.zip/node_modules/ws/",
+          "packageDependencies": [
+            ["ws", "virtual:e8b380c863850045a09fce6a1a72065e59ee06032967e3a05d31d31a6b12f36728a27d7aa0dd96dbe022359b27ded736a360a4131e9d020175782aee48634e4d#npm:7.4.4"],
+            ["@types/bufferutil", null],
+            ["@types/utf-8-validate", null],
+            ["bufferutil", null],
+            ["utf-8-validate", null]
+          ],
+          "packagePeers": [
+            "@types/bufferutil",
+            "@types/utf-8-validate",
+            "bufferutil",
+            "utf-8-validate"
           ],
           "linkType": "HARD",
         }]

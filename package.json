@@ -1,0 +1,6 @@
+{
+  "name": "inverse-sly-bot",
+  "devDependencies": {
+    "typescript": "^4.2.3"
+  }
+}

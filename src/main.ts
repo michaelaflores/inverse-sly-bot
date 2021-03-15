@@ -12,48 +12,44 @@ client.on("message", (msg): void => {
     return;
   }
 
-  const lowerCasedMessage = msg.content.toLowerCase()
-  
+  const lowerCasedMessage = msg.content.toLowerCase();
+
   const intents = [
     {
-      intent: 
-    }
-  ]
-  
-  switch (lowerCasedMessage) {
-    case "test reply":
-      msg.reply("Hello world");
-      break;
-    case ""
-    
-  }
-
-  if (msg.content === "test reply") {
-    
-  } else if () {
-    msg.reply("fuck $GEVO.");
-  } else if (msg.content.toLowerCase().includes("fuck")) {
-    const content = msg.content.toLowerCase();
-    const ticker = content.substr(
-      content.indexOf("$") + 1,
-      content.indexOf("$") + 4
-    );
-
-    msg.reply(`fuck $${ticker.toUpperCase()}.`);
-  } else if (
-    msg.content.includes("820793455894069278") &&
-    msg.content.includes("help")
-  ) {
-    msg.reply(
-      "I'm running in beta mode right now. Commands that involve saving data will only persist for a short period of time."
-    );
-    msg.reply(`Features supported: 
-      1. say fuck $TICKER to make me hate something.
-      
-      Coming soon:
-      1. Make me track the inverse of a position by mentioning me and saying, <buy | sell> $TICKER
-      2. Get my P/L by mentioning me and saying, show the gainz`);
-  }
+      intent: () => lowerCasedMessage.includes("gevo"),
+      reply: () => "fuck $GEVO",
+    },
+    {
+      intent: () => lowerCasedMessage === "test reply",
+      reply: () => "Hello world",
+    },
+    {
+      intent: () => lowerCasedMessage.includes("fuck"),
+      reply: () => {
+        const ticker = lowerCasedMessage.substr(
+          lowerCasedMessage.indexOf("$") + 1,
+          lowerCasedMessage.indexOf("$") + 4
+        );
+        return `fuck $${ticker.toUpperCase()}.`;
+      },
+    },
+    {
+      intent: () =>
+        msg.content.includes("820793455894069278") &&
+        msg.content.includes("help"),
+      reply: () => {
+        return [
+          "I'm running in beta mode right now. Commands that involve saving data will only persist for a short period of time.",
+          `Features supported: 
+          1. say fuck $TICKER to make me hate something.
+          
+          Coming soon:
+          1. Make me track the inverse of a position by mentioning me and saying, <buy | sell> $TICKER
+          2. Get my P/L by mentioning me and saying, show the gainz`,
+        ];
+      },
+    },
+  ];
 });
 
 client.login("ODIwNzkzNDU1ODk0MDY5Mjc4.YE6VeQ.km0qvM7EDoBNxFiiQS1Bi_R4t_c");

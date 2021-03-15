@@ -42,9 +42,26 @@ client.on("message", (msg) => {
                 ];
             },
         },
+        {
+            intent: () => msg.content.includes("820793455894069278"),
+            reply: () => {
+                return "That's not something I know how to handle quite yet.";
+            },
+        },
     ];
+    for (let index = 0; index < intents.length - 1; index++) {
+        const hasIntent = intents[index].intent();
+        // We get plenty of messages that have nothing to do with the bot. Only respond to some specific things.
+        if (hasIntent) {
+            const intentReply = intents[index].reply();
+            typeof intentReply === "string"
+                ? msg.reply(intentReply)
+                : intentReply.forEach((reply) => {
+                    msg.reply(reply);
+                });
+        }
+    }
 });
 client.login("ODIwNzkzNDU1ODk0MDY5Mjc4.YE6VeQ.km0qvM7EDoBNxFiiQS1Bi_R4t_c");
 console.log("client logged in");
-console.log("client");
 //# sourceMappingURL=main.js.map

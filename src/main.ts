@@ -1,5 +1,10 @@
+// We don't have types for discord.js
 // @ts-ignore
-const Discord = require("discord.js");
+import Discord from "discord.js";
+import addPositionToPortfolio from "./addPositionToPortfolio";
+import getPortfolioPositions from "./getPortfolioPositions";
+import getPortfolioValue from "./getPortfolioValue";
+
 const client = new Discord.Client();
 
 client.on("ready", () => {
@@ -16,15 +21,15 @@ client.on("message", (msg): void => {
 
   const intents = [
     {
-      intent: () => lowerCasedMessage.includes("gevo"),
+      intent: (): boolean => lowerCasedMessage.includes("gevo"),
       reply: () => "fuck $GEVO",
     },
     {
-      intent: () => lowerCasedMessage === "test reply",
+      intent: (): boolean => lowerCasedMessage === "test reply",
       reply: () => "Hello world",
     },
     {
-      intent: () => lowerCasedMessage.includes("fuck"),
+      intent: (): boolean => lowerCasedMessage.includes("fuck"),
       reply: () => {
         const ticker = lowerCasedMessage.substr(
           lowerCasedMessage.indexOf("$") + 1,
@@ -34,7 +39,7 @@ client.on("message", (msg): void => {
       },
     },
     {
-      intent: () =>
+      intent: (): boolean =>
         msg.content.includes("820793455894069278") &&
         msg.content.includes("help"),
       reply: () => {
@@ -49,9 +54,53 @@ client.on("message", (msg): void => {
         ];
       },
     },
+    {
+      intent: (): boolean =>
+        msg.content.includes("buy $") || msg.content.includes("sell $"),
+      reply: () => {
+        addPositionToPortfolio();
+        getPortfolioValue();
+        return "";
+      },
+    },
+    {
+      intent: (): boolean => msg.content.includes("show the gainz"),
+      reply: () => {
+        getPortfolioValue();
+        return "";
+      },
+    },
+    {
+      intent: (): boolean => msg.content.includes("positions"),
+      reply: () => {
+        const positions = getPortfolioPositions();
+        return "";
+      },
+    },
+    {
+      intent: (): boolean => msg.content.includes("820793455894069278"),
+      reply: () => {
+        return "That's not something I know how to handle quite yet.";
+      },
+    },
   ];
+
+  for (let index = 0; index < intents.length - 1; index++) {
+    const hasIntent = intents[index].intent();
+    // We get plenty of messages that have nothing to do with the bot. Only respond to some specific things.
+    if (hasIntent) {
+      const intentReply = intents[index].reply();
+
+      typeof intentReply === "string"
+        ? msg.reply(intentReply)
+        : intentReply.forEach((reply) => {
+            msg.reply(reply);
+          });
+
+      break;
+    }
+  }
 });
 
 client.login("ODIwNzkzNDU1ODk0MDY5Mjc4.YE6VeQ.km0qvM7EDoBNxFiiQS1Bi_R4t_c");
 console.log("client logged in");
-console.log("client");

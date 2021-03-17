@@ -8,7 +8,7 @@ import getPortfolioValue from "./getPortfolioValue";
 const client = new Discord.Client();
 
 client.on("ready", () => {
-  console.log(`Logged in as ${client.user.tag}!`);
+  console.log(`Logged in as ${client?.user?.tag}!`);
 });
 
 client.on("message", (msg): void => {
@@ -21,21 +21,24 @@ client.on("message", (msg): void => {
 
   const intents = [
     {
+      // We really don't like $GEVO
       intent: (): boolean => lowerCasedMessage.includes("gevo"),
-      reply: () => "fuck $GEVO",
+      reply: () => "$GEVO is the worst.",
     },
     {
       intent: (): boolean => lowerCasedMessage === "test reply",
       reply: () => "Hello world",
     },
     {
-      intent: (): boolean => lowerCasedMessage.includes("fuck"),
+      intent: (): boolean => lowerCasedMessage.includes("stonk"),
       reply: () => {
         const ticker = lowerCasedMessage.substr(
           lowerCasedMessage.indexOf("$") + 1,
           lowerCasedMessage.indexOf("$") + 4
         );
-        return `fuck $${ticker.toUpperCase()}.`;
+        if (ticker == "") return;
+
+        return `$${ticker.toUpperCase()} is a certified stonk.`;
       },
     },
     {
@@ -46,7 +49,7 @@ client.on("message", (msg): void => {
         return [
           "I'm running in beta mode right now. Commands that involve saving data will only persist for a short period of time.",
           `Features supported: 
-          1. say fuck $TICKER to make me hate something.
+          1. say "$TICKER is a stonk" to make me hate something.
           
           Coming soon:
           1. Make me track the inverse of a position by mentioning me and saying, <buy | sell> $TICKER
@@ -66,6 +69,9 @@ client.on("message", (msg): void => {
     {
       intent: (): boolean => msg.content.includes("show the gainz"),
       reply: () => {
+        // compare values and enter position in ledger
+        // Save ledger via fs.writeFile so we don't need to increase response times linearly as positions are added
+        // TODO: implement function
         getPortfolioValue();
         return "";
       },
@@ -73,6 +79,7 @@ client.on("message", (msg): void => {
     {
       intent: (): boolean => msg.content.includes("positions"),
       reply: () => {
+        // TODO: implement getPortfolioPositions
         const positions = getPortfolioPositions();
         return "";
       },
@@ -90,6 +97,8 @@ client.on("message", (msg): void => {
     // We get plenty of messages that have nothing to do with the bot. Only respond to some specific things.
     if (hasIntent) {
       const intentReply = intents[index].reply();
+
+      if (intentReply == undefined) return;
 
       typeof intentReply === "string"
         ? msg.reply(intentReply)

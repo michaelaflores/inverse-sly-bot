@@ -1,9 +1,16 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+// We don't have types for discord.js
 // @ts-ignore
-const Discord = require("discord.js");
-const client = new Discord.Client();
+const discord_js_1 = __importDefault(require("discord.js"));
+const intents_1 = __importDefault(require("./main/intents"));
+const client = new discord_js_1.default.Client();
 client.on("ready", () => {
-    console.log(`Logged in as ${client.user.tag}!`);
+    var _a;
+    console.log(`Logged in as ${(_a = client === null || client === void 0 ? void 0 : client.user) === null || _a === void 0 ? void 0 : _a.tag}!`);
 });
 client.on("message", (msg) => {
     // Don't respond to self
@@ -11,54 +18,20 @@ client.on("message", (msg) => {
         return;
     }
     const lowerCasedMessage = msg.content.toLowerCase();
-    const intents = [
-        {
-            intent: () => lowerCasedMessage.includes("gevo"),
-            reply: () => "fuck $GEVO",
-        },
-        {
-            intent: () => lowerCasedMessage === "test reply",
-            reply: () => "Hello world",
-        },
-        {
-            intent: () => lowerCasedMessage.includes("fuck"),
-            reply: () => {
-                const ticker = lowerCasedMessage.substr(lowerCasedMessage.indexOf("$") + 1, lowerCasedMessage.indexOf("$") + 4);
-                return `fuck $${ticker.toUpperCase()}.`;
-            },
-        },
-        {
-            intent: () => msg.content.includes("820793455894069278") &&
-                msg.content.includes("help"),
-            reply: () => {
-                return [
-                    "I'm running in beta mode right now. Commands that involve saving data will only persist for a short period of time.",
-                    `Features supported: 
-          1. say fuck $TICKER to make me hate something.
-          
-          Coming soon:
-          1. Make me track the inverse of a position by mentioning me and saying, <buy | sell> $TICKER
-          2. Get my P/L by mentioning me and saying, show the gainz`,
-                ];
-            },
-        },
-        {
-            intent: () => msg.content.includes("820793455894069278"),
-            reply: () => {
-                return "That's not something I know how to handle quite yet.";
-            },
-        },
-    ];
+    const intents = intents_1.default(lowerCasedMessage);
     for (let index = 0; index < intents.length - 1; index++) {
         const hasIntent = intents[index].intent();
         // We get plenty of messages that have nothing to do with the bot. Only respond to some specific things.
         if (hasIntent) {
             const intentReply = intents[index].reply();
+            if (intentReply == undefined)
+                return;
             typeof intentReply === "string"
                 ? msg.reply(intentReply)
                 : intentReply.forEach((reply) => {
                     msg.reply(reply);
                 });
+            break;
         }
     }
 });

@@ -39,5 +39,7 @@ client.on("message", (msg): void => {
   }
 });
 
+// Commit with fake token; Discord will automatically disable a committed login if we accidentally do so
+// ODIwNzkzNDU1ODk0MDY5Mjc4.YE6VeQ.km0qvM7EDoBNxFiiQS1Bi_R4t_c
 client.login("ODIwNzkzNDU1ODk0MDY5Mjc4.YE6VeQ.km0qvM7EDoBNxFiiQS1Bi_R4t_c");
 console.log("client logged in");
